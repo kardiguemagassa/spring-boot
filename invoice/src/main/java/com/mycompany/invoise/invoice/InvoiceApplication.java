@@ -9,33 +9,31 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
-@EntityScan("com.mycompagny.invoise.core.entity.invoice")
+@EntityScan("com.mycompany.invoise.core.entity.invoice")
 public class InvoiceApplication {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(InvoiceApplication.class, args);
 	}
 
 	@Bean
 	public Hibernate6Module datatypeHibernateModule(){
+
 		Hibernate6Module module = new Hibernate6Module();
+
+		// hibernate ignore les propriété @Transient dans entity USE_TRANSIENT_ANNOTATION va resoudre ce probleme
 		module.disable(Hibernate6Module.Feature.USE_TRANSIENT_ANNOTATION);
-		//tu prend le proxy faisant un veritable objet de maniere qu'on puisse serealiser le identfiant
+
+		//tu prend le proxy faisant un veritable objet de maniere qu'on puisse serealiser son identfiant
 		module.enable(Hibernate6Module.Feature.SERIALIZE_IDENTIFIER_FOR_LAZY_NOT_LOADED_OBJECTS);
 		return module;
 	}
 
-	// mise en place de client cloud
-	// avec WebClient plus besion de cette
-	/*
-	@Bean
-	@LoadBalanced
-	public RestTemplate getRestTemplate(){
-		return new RestTemplate();
-	}*/
-
-	//utilisation de reactive WebClient
+	/**
+	 * @LoadBalanced va contacter discovery serveur pour obtenir l'addresse réelle de l'autre serveur.
+	 * Utilisation de reactive WebClient
+	 * @return
+	 */
 	@Bean
 	@LoadBalanced
 	public WebClient.Builder getWebClientBuilder(){

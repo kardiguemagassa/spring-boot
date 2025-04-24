@@ -1,27 +1,62 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Création de la facture</title>
 </head>
 <body>
+
+<h2>Créer une facture</h2>
+
 <form method="POST" th:action="@{/invoice/create}" th:object="${invoiceForm}">
-    <p>Customer name<input th:field="*{customerName}" type="text"/></p>
-    <div th:errors="*{customerName}" th:if="${#fields.hasErrors('customerName')}"></div>
-    <p>Order number<input th:field="*{orderNumber}" type="text"/></p>
-    <div th:errors="*{orderNumber}" th:if="${#fields.hasErrors('orderNumber')}"></div>
-    <p>Street name<input th:field="*{streetName}" type="text"/></p>
-    <div th:errors="*{streetName}" th:if="${#fields.hasErrors('streetName')}"></div>
-    <p>Street number<input th:field="*{streetNumber}" type="text"/></p>
-    <div th:errors="*{streetNumber}" th:if="${#fields.hasErrors('streetNumber')}"></div>
-    <p>City<input th:field="*{city}" type="text"/></p>
-    <div th:errors="*{city}" th:if="${#fields.hasErrors('city')}"></div>
-    <p>Zip code<input th:field="*{zipCode}" type="text"/></p>
-    <div th:errors="*{zipCode}" th:if="${#fields.hasErrors('zipCode')}"></div>
-    <p>Country<input th:field="*{country}" type="text"/></p>
-    <div th:errors="*{country}" th:if="${#fields.hasErrors('country')}"></div>
-    <div></div>
-    <input type="submit" value="OK"/>
+
+    <div>
+        <label>Customer name:</label>
+        <input type="text" th:field="*{customerName}" />
+        <div th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}" class="error"></div>
+    </div>
+
+    <div>
+        <label>Order number:</label>
+        <input type="text" th:field="*{orderNumber}" />
+        <div th:if="${#fields.hasErrors('orderNumber')}" th:errors="*{orderNumber}" class="error"></div>
+    </div>
+
+    <div>
+        <label>Street name:</label>
+        <input type="text" th:field="*{streetName}" />
+        <div th:if="${#fields.hasErrors('streetName')}" th:errors="*{streetName}" class="error"></div>
+    </div>
+
+    <div>
+        <label>Street number:</label>
+        <input type="text" th:field="*{streetNumber}" />
+        <div th:if="${#fields.hasErrors('streetNumber')}" th:errors="*{streetNumber}" class="error"></div>
+    </div>
+
+    <div>
+        <label>City:</label>
+        <input type="text" th:field="*{city}" />
+        <div th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="error"></div>
+    </div>
+
+    <div>
+        <label>Zip code:</label>
+        <input type="text" th:field="*{zipCode}" />
+        <div th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}" class="error"></div>
+    </div>
+
+    <div>
+        <label>Country:</label>
+        <input type="text" th:field="*{country}" />
+        <div th:if="${#fields.hasErrors('country')}" th:errors="*{country}" class="error"></div>
+    </div>
+
+    <div>
+        <input type="submit" value="Valider" />
+    </div>
+
 </form>
+
 </body>
 </html>

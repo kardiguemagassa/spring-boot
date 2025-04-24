@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.1</version>
+		<version>3.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -17,8 +17,8 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>17</java.version>
-		<spring-cloud.version>2023.0.0</spring-cloud.version>
+		<java.version>21</java.version>
+		<spring-cloud.version>2024.0.1</spring-cloud.version>
 	</properties>
 
 	<dependencies>
@@ -33,6 +33,7 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!--database h2database le microservice-->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -45,26 +46,60 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- convertir la valeur hibernate en valeur null lors de convertion en json -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-hibernate6</artifactId>
 		</dependency>
 
+		<!--dependence du project com.mycompany.invoise c'est ou j'ai toutes mes entity donc le coeur de microservice-->
 		<dependency>
 			<groupId>com.mycompany.invoise</groupId>
 			<artifactId>core</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 
+		<!-- eureka-server -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+		</dependency>
+
+		<!-- eureka-client -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 
+
+<!--		&lt;!&ndash;ces dépendances Jersey 2.x (nécessaires pour Spring Cloud 2023.x)&ndash;&gt;-->
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>2.37</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.inject</groupId>
+			<artifactId>jersey-hk2</artifactId>
+			<version>2.37</version>
+		</dependency>
+
+		<!-- Ajoutez la validation -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+
+		<!--Pour le warning sur le cache, vous pouvez ajouter-->
+		<dependency>
+			<groupId>com.github.ben-manes.caffeine</groupId>
+			<artifactId>caffeine</artifactId>
+		</dependency>
+
 	</dependencies>
 
+	<!-- eureka-server -->
 	<dependencyManagement>
-
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
@@ -74,7 +109,6 @@
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
-
 	</dependencyManagement>
 
 	<build>

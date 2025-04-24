@@ -2,9 +2,8 @@ package com.mycompany.invoise.customer.api;
 
 
 import com.mycompany.invoise.core.entity.customer.Address;
-import com.mycompany.invoise.core.entity.customer.Customer;
 import com.mycompany.invoise.customer.repository.AddressRepositoryInterface;
-import com.mycompany.invoise.customer.repository.CustomerRepositoryInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,16 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/address")
 public class AddressResource {
 
-    private final AddressRepositoryInterface addressRepository;
-
-    public AddressResource(AddressRepositoryInterface addressRepository) {
-
-        this.addressRepository = addressRepository;
-    }
-
+    @Autowired
+    private AddressRepositoryInterface addressRepository;
 
     @GetMapping("/{id}")
     public Address get(@PathVariable("id") Long id){
