@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <title>DVDStore</title>
+</head>
+<body>
+
+<!-- Notification flash -->
+<div th:if="${successMessage}" class="notification" th:text="${successMessage}"></div>
+
+<H1>DVDStore : LA boutique de DVD en ligne</H1>
+
+<div class="button-container">
+    <a href="add-movie-form" class="nav-button">Ajouter un film</a>
+    <a href="about-us" class="nav-button about-button">À propos de nous</a>
+</div>
+
+<section class="container">
+    <div class="left-half">
+        <article id="movie-list"></article>
+    </div>
+    <div class="right-half">
+        <article id="movie-detail"></article>
+    </div>
+</section>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

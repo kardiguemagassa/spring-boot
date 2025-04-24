@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bonjour</title>
+    <style>
+        /* Style général */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        /* Conteneur principal */
+        .container {
+            max-width: 800px;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Effet de bordure décorative */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, #4b6cb7, #182848);
+        }
+
+        /* Style du paragraphe */
+        p {
+            font-size: 1.1rem;
+            margin: 0;
+            color: #444;
+            text-align: justify;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Mots en évidence */
+        p strong {
+            color: #4b6cb7;
+            font-weight: 600;
+        }
+
+        /* Animation subtile */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <p>
+        <strong>We started Invoise to change the game for small business.</strong>
+        Our beautiful cloud-based accounting software connects people with the right numbers anytime, anywhere, on any device.
+        For accountants and bookkeepers, Invoise helps build a trusted relationship with small business clients through online collaboration.
+        <strong>We're proud to be helping over 2 million+ subscribers worldwide</strong> transform the way they do business.
+        And we're just getting started.
+    </p>
+</div>
+</body>
+</html>
