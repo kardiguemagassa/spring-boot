@@ -15,6 +15,7 @@ public class InvoiseWebApplication {
 
 	}
 
+	// pour nullifier les proxy on peut créer une class de config pour mettre cette partie
 	@Bean
 	public Hibernate6Module datatypeHibernateModule(){
 		return new Hibernate6Module();
